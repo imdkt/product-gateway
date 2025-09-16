@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  product-service:
+    image: ghcr.io/vishal-pandey/product-grpc:latest
+    container_name: product-service
+    ports:
+      - "50051:50051"
+
+  product-gateway:
+    build: .
+    container_name: product-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - product-service

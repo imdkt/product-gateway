@@ -1,0 +1,27 @@
+syntax = "proto3";
+package product;
+
+option java_multiple_files = true;
+option java_package = "product";
+option java_outer_classname = "ProductProto";
+
+enum ProductStatus {
+  UNKNOWN = 0;
+  AVAILABLE = 1;
+  OUT_OF_STOCK = 2;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  int32 price_in_cents = 3;
+  ProductStatus status = 4;
+}
+
+message GetProductRequest {
+  string id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
